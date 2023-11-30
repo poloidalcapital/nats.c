@@ -1,7 +1,6 @@
 cmake_minimum_required(VERSION 3.13)
 
 project(cnats)
-include(CTest)
 include(FindPackageHandleStandardArgs)
 
 # Uncomment to have the build process verbose
@@ -30,14 +29,14 @@ option(NATS_BUILD_WITH_TLS "Build with TLS support" ON)
 option(NATS_BUILD_TLS_FORCE_HOST_VERIFY "Forces hostname verification" ON)
 option(NATS_BUILD_TLS_USE_OPENSSL_1_1_API "Build for OpenSSL 1.1+" ON)
 option(NATS_BUILD_USE_SODIUM "Build using libsodium library" OFF)
-option(NATS_BUILD_EXAMPLES "Build examples" ON)
+option(NATS_BUILD_EXAMPLES "Build examples" OFF)
 option(NATS_BUILD_LIBUV_EXAMPLE "Build libuv examples" OFF)
 option(NATS_BUILD_LIBEVENT_EXAMPLE "Build libevent examples" OFF)
 option(NATS_BUILD_STATIC_EXAMPLES "Statically link examples" OFF)
-option(NATS_BUILD_STREAMING "Build NATS Streaming" ON)
+option(NATS_BUILD_STREAMING "Build NATS Streaming" OFF)
 option(NATS_BUILD_NO_PREFIX_CONNSTS "No prefix for connection status enum" OFF)
 option(NATS_BUILD_LIB_STATIC "Build static library" ON)
-option(NATS_BUILD_LIB_SHARED "Build shared library" ON)
+option(NATS_BUILD_LIB_SHARED "Build shared library" OFF)
 option(NATS_COMPILER_HARDENING "Compiler hardening flags" OFF)
 if(UNIX AND APPLE)
   option(CMAKE_MACOSX_RPATH "Build with macOS RPath" ON)
@@ -278,6 +277,5 @@ add_subdirectory(examples/getstarted)
 if(NATS_BUILD_STREAMING)
   add_subdirectory(examples/stan)
 endif()
-add_subdirectory(test)
-add_subdirectory(test/dylib)
+
 #----------------------------
